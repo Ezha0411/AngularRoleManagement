@@ -1,0 +1,29 @@
+
+
+<div class="continer">
+    <div class="changeruser">
+        <button class="btn changeruserbtn" (click)="changeUser()">{{ showUser ? 'Admin Login' : 'User Login' }}</button>
+    </div>
+    <h1> Welcome to {{ showUser ? 'Admin Login' : 'User Login' }} </h1>
+    <div id="editUser" [formGroup]="rootFormGroup">
+        <div class="input-items">
+            <label for="username">User Name:</label>
+            <input type="text" name="username" id="username" formControlName="username" >
+            <p class="error 1"></p>
+        </div>
+        <div class="input-items">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" formControlName="password" >
+            <p class="error 2"></p>
+        </div>
+        <div class="input-items">
+            <label for="cpassword">Confirm Password</label>
+            <input type="password" name="cpassword" id="cpassword" formControlName="cpassword">
+            <p class="error 3"></p>
+        </div>
+        
+        <div class="input-items loginbtn">
+            <button (click)="loginUser()" type="reset" class="btn" [disabled]="!rootFormGroup.valid">Login</button>
+        </div>
+    </div>
+</div>

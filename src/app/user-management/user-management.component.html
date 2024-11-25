@@ -1,0 +1,116 @@
+<div class="container">
+    <h1>Welcom to Admin Dashboard</h1>
+    <h2>User Management</h2>
+    <div class="user-management">
+        <div class="btncontainer">
+            <div class="btn-item">
+                <button (click)="openUserForm()" class="btn" [disabled]="showUser">Add User</button>
+  <!-- addnewuser: Boolean = false; --> 
+            <button (click)="showUsers()" class="btn" [disabled]="addnewuser" >{{ showUser ? 'Hide User' : 'Show User' }}</button>
+            </div>
+            <div class="btn-item">
+                <button  class="btn"  (click)="logout()">Logout</button>
+            </div>
+        </div>
+        <div class="usersdata"   *ngIf="showUser">
+            <table >
+                <thead>
+                    <tr>
+                        <th>Sno</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="users.length > 0 ; else nodata">
+                    <tr *ngFor="let user of users let index = index">
+                        <td id="index">{{index + 1}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>
+                            <button (click)="toggleStatus(user)" [ngClass]="user.status == 'Active' ? 'inactive':'active'">
+                                {{ user.status === 'Active' ? 'Deactivate' : 'Activate' }}
+                            </button>
+                        </td>
+                        <td>
+                            <button (click)="editUser(index)" class="editbtn">Edit</button>
+                            <button (click)="deleteUser(index)" class="deletebtn ">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <ng-template #nodata>
+        <tbody>
+            <tr style="text-align: center;">
+                <td colspan="6">
+                    There is No data to fetch......
+                </td>
+            </tr>
+        </tbody>
+    </ng-template>
+
+    <!-- add new user form -->
+    <div *ngIf="addnewuser">
+        <div  [formGroup]="newuserData" (submit)="saveData()">
+            <div id="newUser">
+                <div class="closeAddUser">
+                    <button (click)="closeAddUser()">X</button>
+                </div>
+                <div class="input-items">
+                    <label for="username">User Name:</label>
+                    <input type="text" name="username" id="username" formControlName="username">
+                </div>
+                <div class="input-items">
+                    <label for="mail">User MailId</label>
+                    <input type="email" name="mail" id="mail" formControlName="mail">
+                </div>
+                <div class="input-items">
+                    <label for="role">User Role</label>
+                    <input type="text" name="role" id="role"formControlName="role">
+                </div>
+                <div class="input-items savebtn">
+                    <button (click)="saveData()" type="reset" class="btn" [disabled]="!newuserData.valid">Save User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sucess message -->
+    <div class="successmsg" *ngIf="successmsg">
+        <h2>Success Message</h2>
+        <p>User data is Successfully add to DataBase</p>
+    </div>
+</div>
+
+<div *ngIf="edituser">
+    <div  [formGroup]="newuserData" (submit)="saveData()">
+        <div id="editUser">
+            <div class="closeAddUser">
+                <button (click)="closeAddUser()">X</button>
+            </div>
+            <div class="input-items">
+                <label for="username">User Name:</label>
+                <input type="text" name="username" id="username" formControlName="username" >
+            </div>
+            <div class="input-items">
+                <label for="mail">User MailId</label>
+                <input type="email" name="mail" id="mail" formControlName="mail">
+            </div>
+            <div class="input-items">
+                <label for="role">User Role</label>
+                <input type="text" name="role" id="role"formControlName="role">
+            </div>
+            <div class="input-items savebtn">
+                <button (click)="updateData()" type="reset" class="btn" [disabled]="!newuserData.valid">Updata User</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="successmsg" *ngIf="updatemsg">
+    <h2>Success Message</h2>
+    <p>User data is Successfully Updated to DataBase</p>
+</div>

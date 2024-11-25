@@ -1,0 +1,120 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+h1{
+    font-size: 28px;
+    text-align: left;
+    margin-bottom: 16px;
+    color: white; 
+}
+h2{
+    font-size: 20px;
+    text-align: left;
+    font-weight: 500;
+    color: white;
+}
+h2>span{
+    /* font-size: 12px; */
+    color: rgb(14, 165, 235);
+}
+button{
+    border: none;
+    background-color: transparent;
+}
+.btn {
+    width: 120px;
+    background-color: rgb(37, 148, 245);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-weight: 550;
+    border-radius: 4px;
+}
+.container {
+    width: 50%;
+    height: 80%;
+    background-color: white;
+    background-image: url(../../assets/istockphoto-1821704693-2048x2048.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 1rem;
+    border-radius: 4px;
+    margin:1rem auto;
+}
+.btncontainer{
+    display: flex;
+    flex-direction: column;
+    /* align-items:; */
+    justify-content: space-between;
+    gap: 25rem;
+}
+.btn-item{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+table,
+td{
+    border: 1px solid white;
+    border-collapse: collapse;
+    padding: 12px;
+    color: white;
+}
+.userdetails{
+    background-color: rgba(207, 213, 238,0.6);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 8px;
+    position: absolute;
+    top:20%;
+    left: 35%;
+    animation-name: userdetails;
+    animation-duration:1s;
+}
+@keyframes userdetails {
+    from{
+        top: 0%;
+    }
+    to{
+        top: 20%;
+    }
+}
+.taskcontainer{
+    color: white;
+    width: 420px;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid;
+    position: absolute;
+    top:24%;
+    left: 35%;
+    animation-name: usertask;
+    animation-duration:1s;
+}
+@keyframes usertask {
+    from{
+        top: 0%;
+    }
+    to{
+        top: 24%;
+    }
+}
+.taskcontainer>h2{
+    margin-bottom: 10px;
+}
+.taskcontainer>h2>span{
+    font-size: 12px;
+}
+.reportmsg{
+    font-size: 14px;
+    margin-top: 12px;
+    text-align: right;
+}

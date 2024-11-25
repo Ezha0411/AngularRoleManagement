@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>User Dashboard</h1>
+  <h2>Welcome Back <span>{{loginUserdetails.loginUserdetails.name}}</span> </h2>
+  <div class="btncontainer">
+    <div class="btn-item">
+      <button class="btn" (click)="viewDetails()" [disabled]="userTask">{{ userdetails ? 'Hide Details' : 'View Details' }}</button>
+      <button class="btn" (click)="viewTask()" [disabled]="userdetails">View Task</button>
+    </div>
+    <div class="btn-item">
+      <button class="btn" (click)="logout()">Logout</button>
+    </div> 
+  </div>
+</div>
+<div class="userdetails" *ngIf="userdetails">
+  <table>
+    <tbody *ngFor="let value of loginUserdetails.loginUserdetails | keyvalueNoSorting ">
+      <tr>
+        <td>{{value[0]}} </td>
+        <td>{{value[1]}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="taskcontainer" *ngIf="userTask" >
+  <h2>{{loginUserdetails.loginUserdetails.name}} <span>{{loginUserdetails.loginUserdetails.role}}</span></h2>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus possimus repudiandae libero autem commodi sit molestiae, cupiditate in corporis iusto architecto hic pariatur nesciunt? Deleniti laboriosam quaerat quisquam maiores sequi pariatur quis expedita maxime officiis, veritatis, voluptatibus hic est totam. Ipsa reiciendis magni quo neque enim aliquam architecto, nam pariatur atque cupiditate voluptates fugiat eius tempora sed error quidem, quaerat numquam libero. Modi magnam quos nisi assumenda voluptates sit possimus rerum accusantium cupiditate dignissimos eveniet saepe eaque doloribus, odit rem ex ipsa maiores quibusdam architecto voluptate dolorem soluta veniam porro? Quidem, accusantium corrupti quos asperiores magnam libero reiciendis facilis laudantium.</p>
+  <p class="reportmsg">Completed and send me the report</p>
+</div>
